@@ -1,17 +1,15 @@
 package model;
 
 public class Nodo<T> {
-    //Atributos
     private T elemento;
-    private Nodo<T> siguiente; //Apunta al siguiente nodo
+    private Nodo<T> siguiente;
 
-    //Contructor
+    // Constructor
     public Nodo(T elemento, Nodo<T> siguiente) {
         this.elemento = elemento;
         this.siguiente = siguiente;
     }
 
-    //Metodos
     public T getElemento() {
         return elemento;
     }
@@ -30,6 +28,6 @@ public class Nodo<T> {
 
     @Override
     public String toString() {
-        return elemento + "\n";
+        return elemento.toString(); // Convertir el elemento a String
     }
 }
