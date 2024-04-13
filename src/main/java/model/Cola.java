@@ -1,12 +1,13 @@
 package model;
 import model.Carta;
 
+import java.util.LinkedList;
 import java.util.Queue;
 public class Cola {
     private Queue<Carta> cartas;
 
     public Cola(){
-        this.cartas = new Queue<>();
+        this.cartas = new LinkedList<>();
     }
 
     public void agregarCarta(Carta carta){

@@ -1,6 +1,9 @@
 package model;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Jugador {
     private String nombre;
     private List<Carta> mano;
@@ -18,4 +21,11 @@ public class Jugador {
         return mano;
     }
 
+    public void agregarCarta(Carta carta) {
+        mano.add(carta);
+    }
+
+    public void quitarCarta(Carta cartaSeleccionada) {
+        mano.remove(cartaSeleccionada);
+    }
 }

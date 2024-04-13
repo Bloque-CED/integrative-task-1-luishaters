@@ -1,11 +1,11 @@
 package model;
 
-//import java.util.Stack;
-
 /**
  * Clase Pila Dinamica
  * @param <T>
+
  */
+
 public class PilaDinamica<T> {
     private Nodo<T> top; //es el ultimo nodo que se añade
     private int tamano;
@@ -16,7 +16,6 @@ public class PilaDinamica<T> {
         this.tamano = 0;
     }
 
-    // Métodos
     /**
      * Indica si esta vacia o no
      * @return
@@ -54,9 +53,7 @@ public class PilaDinamica<T> {
             return null;
         } else {
             T elemento = top.getElemento();
-            Nodo<T> aux = top.getSiguiente();
-            top = null; // borra
-            top = aux; // actualiza el top
+            top = top.getSiguiente();
             this.tamano--;
             return elemento;
         }
@@ -64,13 +61,13 @@ public class PilaDinamica<T> {
 
     /**
      * Añade un elemento a la pila
+     *
      * @param elemento
      * @return
      */
     public T push(T elemento) {
-
-        Nodo<T> aux = new Nodo<>(elemento, top);
-        top = aux; //actualizar el top
+        Nodo<T> aux = new Nodo<T>(elemento, top);
+        top = aux;
         this.tamano++;
         return aux.getElemento();
     }
@@ -84,19 +81,26 @@ public class PilaDinamica<T> {
         if (isEmpty()) {
             return "La pila esta vacia";
         } else {
-            String resultado = "";
+            StringBuilder resultado = new StringBuilder();
             Nodo<T> aux = top;
-            //Recorrer la pila
+            // Recorrer la pila
             while (aux != null) {
-                resultado += aux.toString();
+                resultado.append(aux.toString());
                 aux = aux.getSiguiente();
             }
-            return resultado;
+            return resultado.toString();
         }
 
     }
 
+    public Carta verCartaSuperior() {
+        return (Carta) top();
+    }
 
-    //public <T> void push(T c) {
-    //}
+    public void agregarCarta(T cartaSeleccionada) {
+        push((cartaSeleccionada));
+    }
 }
+
+
+

@@ -10,39 +10,39 @@ public class Carta {
     //el atributo es null cuando no lo contiene, sea el caso de ser comun
 
 
-    public Carta (int numero, ColoresCartas color) {
+    public Carta(int numero, ColoresCartas color) {
         this.numero = numero;
         this.color = color;
     }
-    public  Carta(ColoresCartas colo, EfectoEspecial efecto){
-       // Carta(-1, color);
+
+    public Carta(ColoresCartas colo, EfectoEspecial efecto) {
+        // Carta(-1, color);
         this.efecto = efecto;
     }
 
-    public ColoresCartas getColor(){
+    public ColoresCartas getColor() {
         return color;
     }
 
-    public int getNumero(){
+    public int getNumero() {
         return numero;
     }
 
-    public EfectoEspecial getEfecto(){
+    public EfectoEspecial getEfecto() {
         return efecto;
-
     }
 
-    public boolean isEspecial(){
+    public boolean isEspecial() {
         return this.efecto != null;
     }
 
     @Override
-    public String toString(){
+    public String toString() {
 
-        String estado ="";
+        String estado = "";
 
-        if (this.isEspecial()){
-            switch (this.efecto){
+        if (this.isEspecial()) {
+            switch (this.efecto) {
                 case MAS_DOS:
                     estado = "+2 " + "| " + color;
                     break;
@@ -53,7 +53,7 @@ public class Carta {
                     estado = "Invertir Sentido " + "| " + color;
                     break;
                 case MAS_CUATRO:
-                    estado = "+4 "+ "| " + color;
+                    estado = "+4 " + "| " + color;
                     break;
                 case CAMBIAR_COLOR:
                     estado = "Cambiar Color " + "| " + color;
@@ -67,4 +67,9 @@ public class Carta {
 
         return estado;
     }
+
+
+
 }
+
+

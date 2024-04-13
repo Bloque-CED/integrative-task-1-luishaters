@@ -4,10 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import model.EfectoEspecial;
-import model.ColoresCartas;
-import model.PilaDinamica;
-
 
 public class Mazo <T extends Carta> {
     private PilaDinamica<T> cartas;
@@ -26,39 +22,26 @@ public class Mazo <T extends Carta> {
         barajar();
     }
 
-    private <T> void barajar() {
-        int posAleatoria = 0;
-        Carta c;
-
+    private void barajar() {
+        List<T> listaCartas = new ArrayList<>();
         while (!this.cartasMonton.isEmpty()) {
             this.cartas.push(this.cartasMonton.pop());
         }
 
-        Carta cartasBarajar[] = new Carta[this.totalCartas];
-
-        int indiceCarta = 0;
         while (!this.cartas.isEmpty()) {
-            cartasBarajar[indiceCarta] = this.cartas.pop();
-            indiceCarta++;
+            listaCartas.add(this.cartas.pop());
         }
 
-        for (int i = 0; i < cartasBarajar.length; i++) {
+        Collections.shuffle(listaCartas);
 
-            do {
-                posAleatoria = generaNumeroEnteroAleatorio(0, totalCartas-1);
-                c = cartasBarajar[posAleatoria];
-            } while (c == null);
-
-            this.cartas.push(T);
-            cartasBarajar[posAleatoria] = null;
-
+        for (T carta : listaCartas) {
+            this.cartas.push(carta);
         }
     }
 
     //metodo para crear el mazo de cartas
     // opcion 1
 
-    //@Override
     public void crearMazo(){
         ColoresCartas[] colores = ColoresCartas.values();
 
@@ -68,36 +51,46 @@ public class Mazo <T extends Carta> {
                     if(i>9){
                         switch (i){
                             case 10:
-                                this.cartas.push(new Carta(color, EfectoEspecial.MAS_DOS));
+                                this.cartas.push((T) new Carta(color, EfectoEspecial.MAS_DOS));
                                 break;
                             case 11:
-                                this.cartas.push(new Carta(color, EfectoEspecial.INVERTIR_SENTIDO));
+                                this.cartas.push((T)new Carta(color, EfectoEspecial.INVERTIR_SENTIDO));
                                 break;
                             case 12:
-                                this.cartas.push(new Carta(color, EfectoEspecial.SALTAR_TURNO));
+                                this.cartas.push((T)new Carta(color, EfectoEspecial.SALTAR_TURNO));
                                 break;
 
                         }
                     } else{
-                        this.cartas.push(new Carta (i, color));
+                        this.cartas.push((T)new Carta (i, color));
                     }
                 }
             }else {
                 for(int i=0; i<4; i++){
-                    this.cartas.push(new Carta(color, EfectoEspecial.MAS_CUATRO));
-                    this.cartas.push(new Carta(color, EfectoEspecial.CAMBIAR_COLOR));
+                    this.cartas.push((T)new Carta(color, EfectoEspecial.MAS_CUATRO));
+                    this.cartas.push((T)new Carta(color, EfectoEspecial.CAMBIAR_COLOR));
 
                 }
             }
         }
     }
 
-    public static int generaNumeroEnteroAleatorio(int minimo, int maximo) {
-        int num = (int) (Math.random() * (minimo - (maximo + 1)) + (maximo + 1));
-        return num;
+    public Carta robarCarta(){
+        return this.cartas.pop();
+    }
+    public void mezclar() {
+        List<T> listaCartas = new ArrayList<>();
+        while (!this.cartas.isEmpty()) {
+            listaCartas.add(this.cartas.pop());
+        }
+        Collections.shuffle(listaCartas);
+        for (T carta : listaCartas) {
+            this.cartas.push(carta);
+        }    }
+
+    public void agregarCarta(Carta cartaInicial) {
+        this.cartasMonton.push((T) cartaInicial);
     }
 
-    public void mezclar() {
-        Collections.shuffle(cartas); // Se utiliza el método shuffle de la clase Collections para mezclar la lista de cartas
-    }
+
 }
