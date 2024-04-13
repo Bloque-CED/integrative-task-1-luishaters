@@ -86,10 +86,15 @@ public class Mazo <T extends Carta> {
         Collections.shuffle(listaCartas);
         for (T carta : listaCartas) {
             this.cartas.push(carta);
-        }    }
+        }
+    }
 
     public void agregarCarta(Carta cartaInicial) {
         this.cartasMonton.push((T) cartaInicial);
+    }
+
+    public Carta obtenerCartaDesdeMazoJuego(int id) {
+        return Carta.obtenerCartaDesdeMazoJuego(id);
     }
 
 

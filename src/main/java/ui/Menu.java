@@ -3,12 +3,15 @@ package ui;
 import model.JuegoUno;
 import java.util.Scanner;
 
+import static model.JuegoUno.comenzarNuevaPartida;
 
 
 public class Menu {
     private Scanner scanner;
+    private JuegoUno juego;
 
     public Menu() {
+        this.juego = new JuegoUno();
         this.scanner = new Scanner(System.in);
     }
 
@@ -26,13 +29,14 @@ public class Menu {
             System.out.print("Seleccione una opción: ");
 
             opcion = scanner.nextInt();
-            scanner.nextLine(); // Consumir el salto de línea después de la entrada del usuario
+            scanner.nextLine();
 
             switch (opcion) {
                 case 1:
                     // Lógica para comenzar una nueva partida
                     System.out.println("Comenzando nueva partida...");
-                    JuegoUno.comenzarNuevaPartida(listaJugadores);
+                    Object listaJugadores;
+                    comenzarNuevaPartida(); // Llamar al método en la instancia
                     break;
                 case 2:
                     // Lógica para cargar una partida guardada
