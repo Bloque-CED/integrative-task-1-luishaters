@@ -90,6 +90,21 @@ public class Carta {
     public void setColor(ColoresCartas nuevoColor) {
         this.color = color;
     }
+
+    public boolean esCompatible(Carta otraCarta) {
+        if (this.esEspecial() || otraCarta.esEspecial() ||
+                this.color == otraCarta.color || this.numero == otraCarta.numero) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private boolean esEspecial() {
+        return this.efecto != null;
+
+    }
+
 }
 
 
