@@ -95,7 +95,7 @@ public class JuegoUno {
                 // El jugador decide robar una carta
                 Carta cartaRobada = mazo.robarCarta();
                 System.out.println(jugadorActual.getNombre() + " roba una carta del mazo.");
-                if (cartaRobada.equals(cartaSuperior)) {
+                if (cartaRobada.esCompatible(cartaSuperior)) {
                     // Si la carta robada se puede jugar, el jugador la juega
                     System.out.println(jugadorActual.getNombre() + " juega la carta robada: " + cartaRobada.toString());
                     mazoDescarte.agregarCarta(cartaRobada);
@@ -113,7 +113,7 @@ public class JuegoUno {
                 System.out.println("El jugador decide jugar la carta: " + cartaSeleccionada.toString());
 
                 // Verificar si la carta seleccionada es válida para jugar
-                if (cartaSeleccionada.equals(cartaSuperior)) {
+                if (cartaSeleccionada.esCompatible(cartaSuperior)) {
                     if (cartaSeleccionada.isEspecial()) {
                         aplicarEfectoEspecial(cartaSeleccionada, jugadores, mazo, mazoDescarte, jugadorActual);
                     } else {
