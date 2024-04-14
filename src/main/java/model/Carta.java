@@ -94,6 +94,20 @@ public class Carta {
     public int getId() {
         return 0;
     }
+
+    public boolean esCompatible(Carta otraCarta) {
+        if (this.esEspecial() || otraCarta.esEspecial() ||
+                this.color == otraCarta.color || this.numero == otraCarta.numero) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private boolean esEspecial() {
+        return this.efecto != null;
+
+    }
 }
 
 
