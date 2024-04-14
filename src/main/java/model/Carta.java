@@ -90,6 +90,10 @@ public class Carta {
     public void setColor(ColoresCartas nuevoColor) {
         this.color = color;
     }
+
+    public int getId() {
+        return 0;
+    }
 }
 
 

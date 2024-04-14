@@ -158,7 +158,7 @@ public class JuegoUno {
         jugadores.get(indiceSiguienteJugador).setTurno(true);
     }
 
-    private static void aplicarEfectoEspecial(Carta carta, List<Jugador> jugadores, Mazo mazo, PilaDinamica<Carta> mazoDescarte, Jugador jugadorActual) {
+    public static void aplicarEfectoEspecial(Carta carta, List<Jugador> jugadores, Mazo mazo, PilaDinamica<Carta> mazoDescarte, Jugador jugadorActual) {
         switch (carta.getEfecto()) {
             case CAMBIAR_COLOR:
                 // Permitir al jugador elegir el nuevo color
